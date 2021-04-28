@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30104.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetCheckAPI", "NetCheckAPI\NetCheckAPI.csproj", "{0F389072-77D0-4932-8CC4-5451A936F02F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetCheckAPI.Tests", "NetCheckAPI.Tests\NetCheckAPI.Tests.csproj", "{2B0C3A4F-CA72-466E-ABD0-D7050EFE7A35}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0F389072-77D0-4932-8CC4-5451A936F02F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F389072-77D0-4932-8CC4-5451A936F02F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F389072-77D0-4932-8CC4-5451A936F02F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F389072-77D0-4932-8CC4-5451A936F02F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B0C3A4F-CA72-466E-ABD0-D7050EFE7A35}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B0C3A4F-CA72-466E-ABD0-D7050EFE7A35}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B0C3A4F-CA72-466E-ABD0-D7050EFE7A35}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B0C3A4F-CA72-466E-ABD0-D7050EFE7A35}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {677BA1C7-B7BD-44FF-8F98-9F5C2919AD96}
+	EndGlobalSection
+EndGlobal
