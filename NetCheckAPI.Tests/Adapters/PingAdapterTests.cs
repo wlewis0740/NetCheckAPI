@@ -13,12 +13,11 @@ namespace NetCheckAPI.Tests.Adapters
         [TestMethod]
         public void TestGetResults() {
             string address = "127.0.0.1";
-            string actualAddress = "";
             IAdapter adapter = new PingAdapter(new Ping());
 
             Result result  = adapter.GetResult(address);
 
-            Assert.IsTrue(result.data.TryGetValue("address", out actualAddress));
+            Assert.IsTrue(result.Data.TryGetValue(PingAdapter.Address, out string actualAddress));
             Assert.AreEqual(address, actualAddress);
         }
     }

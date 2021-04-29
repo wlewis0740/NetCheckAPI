@@ -86,6 +86,7 @@
   <ItemGroup>
     <Compile Include="Adapters\IAdapter.cs" />
     <Compile Include="Adapters\PingAdapter.cs" />
+    <Compile Include="Adapters\ReverseDNSAdapter.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\InfoController.cs" />
     <Compile Include="Global.asax.cs">

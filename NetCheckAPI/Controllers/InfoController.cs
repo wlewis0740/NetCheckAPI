@@ -16,10 +16,10 @@ namespace NetCheckAPI.Controllers
         public Info Get(string address, string services = "default")
         {
             Info info = new Info {
-                address = address,
-                services = services,
-                results = new Result[] {
-                    new Result { service = "Hello Service", data = new Dictionary<string, string>() { { "message", "Hello World" } }}
+                Address = address,
+                Services = services,
+                Results = new Result[] {
+                    new Result { Service = "Hello Service", Data = new Dictionary<string, string>() { { "message", "Hello World" } }}
                 }
             };
             return info;
