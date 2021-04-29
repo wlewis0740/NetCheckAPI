@@ -7,8 +7,7 @@ namespace NetCheckAPI.Models
 {
     public class Result
     {
-        public string address { get; set; }
-        public string services { get; set; }
-        public string message { get;  set; }
+        public string service { get; set; }
+        public Dictionary<string, string> data { get;  set; }
     }
 }
