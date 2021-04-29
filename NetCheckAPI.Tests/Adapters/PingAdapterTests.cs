@@ -15,7 +15,7 @@ namespace NetCheckAPI.Tests.Adapters
             string address = "127.0.0.1";
             IAdapter adapter = new PingAdapter(new Ping());
 
-            Result result  = adapter.GetResult(address);
+            Result result  = adapter.GetResults(address);
 
             Assert.IsTrue(result.Data.TryGetValue(PingAdapter.Address, out string actualAddress));
             Assert.AreEqual(address, actualAddress);

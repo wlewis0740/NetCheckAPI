@@ -17,10 +17,10 @@ namespace NetCheckAPI.Adapters
         private readonly Ping _ping;
 
         public PingAdapter(Ping ping) {
-            this._ping = ping;
+            _ping = ping;
         }
 
-        public Result GetResult(string address) {
+        public Result GetResults(string address) {
             var data = new Dictionary<string, string>();
             PingReply reply = _ping.Send(address);
             if (reply.Status == IPStatus.Success) {

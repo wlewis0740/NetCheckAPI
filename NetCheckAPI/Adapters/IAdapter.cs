@@ -8,6 +8,6 @@ namespace NetCheckAPI.Adapters
 {
     public interface IAdapter
     {
-        Result GetResult(string address);
+        Result GetResults(string address);
     }
 }

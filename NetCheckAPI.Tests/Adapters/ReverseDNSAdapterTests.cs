@@ -13,7 +13,7 @@ namespace NetCheckAPI.Tests.Adapters
             string hostname = "www.google.com";
             IAdapter reverseDNSAdapter = new ReverseDNSAdapter();
 
-            Result result = reverseDNSAdapter.GetResult(hostname);
+            Result result = reverseDNSAdapter.GetResults(hostname);
 
             Assert.IsTrue(result.Data.TryGetValue(ReverseDNSAdapter.HostName, out string actualHostName));
             Assert.AreEqual(hostname, actualHostName);

@@ -12,7 +12,7 @@ namespace NetCheckAPI.Adapters
         public const string HostName = "hostName";
         public const string AddressList = "addressList";
 
-        public Result GetResult(string address) {
+        public Result GetResults(string address) {
             var data = new Dictionary<string, string>();
             var host = Dns.GetHostEntry(address);
             data.Add(HostName, host.HostName);
