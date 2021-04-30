@@ -14,7 +14,7 @@ namespace NetCheckAPI.Services
             _validator = validator;
         }
 
-        public string ValidateNetworkID(string networkID) {
+        public ValidationResponse ValidateNetworkID(string networkID) {
             return _validator.Validate(networkID);
         }
     }

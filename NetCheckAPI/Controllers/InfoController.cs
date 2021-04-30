@@ -22,14 +22,22 @@ namespace NetCheckAPI.Controllers
         [ResponseType(typeof(Info))]
         public async Task<Info> Get(string address, string services = defaultServices)
         {
-            var ipAddressValidator = new IPAddressValidator();
-            var domainNameValidator = new DomainNameValidator();
-            new ValidatorService(ipAddressValidator.SetNext(domainNameValidator));
+            var validatorChain = new IPAddressValidator(new DomainNameValidator(null));
+            ValidationResponse response = new ValidatorService(validatorChain).ValidateNetworkID(address);
 
+            Result[] results;
+            if (response.isValid) {
+                results = await new AdapterTaskService(new AdapterFactory()).ExecuteAdapterTasks(services.Split(',').ToList(), address);
+            } else {
+                var data = new Dictionary<string, string>();
+                data.Add(nameof(response.isValid), response.isValid.ToString());
+                data.Add(nameof(response.message), response.message);
+                results = new Result[] { new Result { Service = "Validation", Data = data } };
+            }
             Info info = new Info {
                 Address = address,
                 Services = services,
-                Results = await new AdapterTaskService(new AdapterFactory()).ExecuteAdapterTasks(services.Split(',').ToList(), address),
+                Results = results,
             };
             return info;
         }

@@ -5,11 +5,13 @@ using System.Web;
 
 namespace NetCheckAPI.Validators
 {
-    public class DomainNameValidator : BaseNetworkValidator, INetworkValidator
+    public class DomainNameValidator : BaseNetworkValidator
     {
-        public override string Validate(string networkID) {
-            if (Uri.CheckHostName(networkID) != UriHostNameType.Unknown) {
-                return "Valid Domain Name";
+        public DomainNameValidator(INetworkValidator validator) : base(validator) { }
+
+        public override ValidationResponse Validate(string networkID) {
+            if (Uri.CheckHostName(networkID) == UriHostNameType.Dns) {
+                return new ValidationResponse { isValid = true, message = "Valid Domain Name" };
             } else {
                 return base.Validate(networkID);
             }

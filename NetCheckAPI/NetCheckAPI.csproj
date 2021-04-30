@@ -120,6 +120,7 @@
     <Compile Include="Validators\DomainNameValidator.cs" />
     <Compile Include="Validators\INetworkValidator.cs" />
     <Compile Include="Validators\IPAddressValidator.cs" />
+    <Compile Include="Validators\ValidationResponse.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

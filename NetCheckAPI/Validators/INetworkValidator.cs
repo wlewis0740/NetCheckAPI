@@ -8,7 +8,6 @@ namespace NetCheckAPI.Validators
 {
     public interface INetworkValidator
     {
-        INetworkValidator SetNext(INetworkValidator validator);
-        string Validate(string networkID);
+        ValidationResponse Validate(string networkID);
     }
 }
