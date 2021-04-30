@@ -19,27 +19,26 @@ namespace NetCheckAPI.Controllers
         const string defaultServices = nameof(PingAdapter) + "," + nameof(ReverseDNSAdapter);
 
         // GET: api/Results/5
-        [ResponseType(typeof(Info))]
-        public async Task<Info> Get(string address, string services = defaultServices)
+        public async Task<HttpResponseMessage> Get(string address, string services = defaultServices)
         {
             var validatorChain = new IPAddressValidator(new DomainNameValidator(null));
             ValidationResponse response = new ValidatorService(validatorChain).ValidateNetworkID(address);
 
-            Result[] results;
             if (response.isValid) {
-                results = await new AdapterTaskService(new AdapterFactory()).ExecuteAdapterTasks(services.Split(',').ToList(), address);
+                Info info = new Info {
+                    Address = address,
+                    Services = services,
+                    Results = await new AdapterTaskService(new AdapterFactory()).ExecuteAdapterTasks(services.Split(',').ToList(), address),
+                };
+                return Request.CreateResponse(HttpStatusCode.OK, info);
             } else {
-                var data = new Dictionary<string, string>();
-                data.Add(nameof(response.isValid), response.isValid.ToString());
-                data.Add(nameof(response.message), response.message);
-                results = new Result[] { new Result { Service = "Validation", Data = data } };
+                InvalidParameterResponse tmp = new InvalidParameterResponse {
+                    Address = address,
+                    Services = services,
+                    ParameterValidation = response,
+                };
+                return Request.CreateResponse(HttpStatusCode.BadRequest, tmp);
             }
-            Info info = new Info {
-                Address = address,
-                Services = services,
-                Results = results,
-            };
-            return info;
         }
     }
 }
