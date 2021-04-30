@@ -14,9 +14,13 @@ namespace NetCheckAPI.Adapters
 
         public Result GetResults(string address) {
             var data = new Dictionary<string, string>();
-            var host = Dns.GetHostEntry(address);
-            data.Add(HostName, host.HostName);
-            data.Add(AddressList, string.Join(",", host.AddressList.Select(x => x.ToString())));
+            try {
+                var host = Dns.GetHostEntry(address);
+                data.Add(HostName, host.HostName);
+                data.Add(AddressList, string.Join(",", host.AddressList.Select(x => x.ToString())));
+            } catch(Exception e) {
+                data.Add("error", e.Message);
+            }
             return new Result { Service = nameof(ReverseDNSAdapter), Data = data };
         }
     }

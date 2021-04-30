@@ -102,7 +102,6 @@
     <Compile Include="Adapters\GeoIPAdapter.cs" />
     <Compile Include="Adapters\IAdapter.cs" />
     <Compile Include="Adapters\PingAdapter.cs" />
-    <Compile Include="Adapters\RDAPAdapter.cs" />
     <Compile Include="Adapters\ReverseDNSAdapter.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\InfoController.cs" />

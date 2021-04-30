@@ -19,9 +19,13 @@ namespace NetCheckAPI.Adapters
 
         public Result GetResults(string address) {
             var data = new Dictionary<string, string>();
-            var geoData = _geoLocationProvider.GetLocationByIP(address);
-            data.Add(City, geoData.city);
-            data.Add(CountryCode, geoData.country_code);
+            try {
+                var geoData = _geoLocationProvider.GetLocationByIP(address);
+                data.Add(City, geoData.city);
+                data.Add(CountryCode, geoData.country_code);
+            } catch (Exception e) {
+                data.Add("error", e.Message);
+            }
             return new Result { Service = nameof(GeoIPAdapter), Data = data };
         }
     }

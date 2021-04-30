@@ -23,13 +23,17 @@ namespace NetCheckAPI.Adapters
         public Result GetResults(string address) {
             var data = new Dictionary<string, string>();
             PingReply reply = _ping.Send(address);
-            if (reply.Status == IPStatus.Success) {
-                data.Add(Address, reply.Address.ToString());
-                data.Add(RoundTripTime, reply.RoundtripTime.ToString());
-                data.Add(TimeToLive, reply.Options.Ttl.ToString());
-                data.Add(BufferSize, reply.Buffer.Length.ToString());
-            } else {
-                data.Add("error", "Ping Failed");
+            try {
+                if (reply.Status == IPStatus.Success) {
+                    data.Add(Address, reply.Address.ToString());
+                    data.Add(RoundTripTime, reply.RoundtripTime.ToString());
+                    data.Add(TimeToLive, reply.Options.Ttl.ToString());
+                    data.Add(BufferSize, reply.Buffer.Length.ToString());
+                } else {
+                    data.Add("error", "Ping Failed");
+                }
+            } catch (Exception e) {
+                data.Add("error", e.Message);
             }
             return new Result() { Service = nameof(PingAdapter), Data = data };
         }
