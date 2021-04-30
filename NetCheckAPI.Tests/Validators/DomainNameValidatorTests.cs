@@ -8,12 +8,12 @@ namespace NetCheckAPI.Tests.Validators
     public class DomainNameValidatorTests
     {
         [TestMethod]
-        public void TestValidate_valid() {
+        public void TestValidate_validDomainName() {
             TestValidate("test.com", true);
         }
 
         [TestMethod]
-        public void TestValidate_invalid() {
+        public void TestValidate_invalidDomainName() {
             TestValidate("test", false);
         }
 
