@@ -115,6 +115,11 @@
     <Compile Include="Models\Result.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AdapterTaskService.cs" />
+    <Compile Include="Services\ValidatorService.cs" />
+    <Compile Include="Validators\BaseNetworkValidator.cs" />
+    <Compile Include="Validators\DomainNameValidator.cs" />
+    <Compile Include="Validators\INetworkValidator.cs" />
+    <Compile Include="Validators\IPAddressValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

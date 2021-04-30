@@ -1,6 +1,8 @@
-﻿using NetCheckAPI.Factories;
+﻿using NetCheckAPI.Adapters;
+using NetCheckAPI.Factories;
 using NetCheckAPI.Models;
 using NetCheckAPI.Services;
+using NetCheckAPI.Validators;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,17 +16,20 @@ namespace NetCheckAPI.Controllers
 {
     public class InfoController : ApiController
     {
+        const string defaultServices = nameof(PingAdapter) + "," + nameof(ReverseDNSAdapter);
+
         // GET: api/Results/5
         [ResponseType(typeof(Info))]
-        public async Task<Info> Get(string address, string services = "default")
+        public async Task<Info> Get(string address, string services = defaultServices)
         {
+            var ipAddressValidator = new IPAddressValidator();
+            var domainNameValidator = new DomainNameValidator();
+            new ValidatorService(ipAddressValidator.SetNext(domainNameValidator));
+
             Info info = new Info {
                 Address = address,
                 Services = services,
                 Results = await new AdapterTaskService(new AdapterFactory()).ExecuteAdapterTasks(services.Split(',').ToList(), address),
-                /*Results = new Result[] {
-                    new Result { Service = "Hello Service", Data = new Dictionary<string, string>() { { "message", "Hello World" } }}
-                }*/
             };
             return info;
         }
