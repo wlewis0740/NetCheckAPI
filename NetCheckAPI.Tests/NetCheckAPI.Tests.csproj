@@ -81,6 +81,7 @@
     <Compile Include="Adapters\RDAPAdapterTests.cs" />
     <Compile Include="Factories\AdapterFactoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AdapterTaskServiceTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
